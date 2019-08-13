@@ -10,9 +10,5 @@ namespace Obligatorisk_oppgave1
 		public string FirstName;
 		public Person Mother;
 		public Person Father;
-		public void Show()
-		{
-			Console.WriteLine("test");
-		}
 	}
 }

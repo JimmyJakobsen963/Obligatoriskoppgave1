@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Obligatorisk_oppgave1;
 
 namespace ObligatoriskOppgave_1
@@ -38,15 +39,21 @@ namespace ObligatoriskOppgave_1
 			olav.Father = null;
 			olav.Mother = null;
 
+			Console.WriteLine("Slektstre-program!");
+			Console.WriteLine();
+			Console.WriteLine("Skriv 'hjelp' for å få opp dine alternativer.");
+
 			var loop = true;
 			while (loop == true)
 			{
 				var txt = Console.ReadLine();
 				if (txt == "hjelp")
 				{
-					Console.WriteLine("liste => Lister av alle personer med id, fornavn, fødselsår, dødsår, navn og id på mor og far om det finnes registrert.");
+					Console.WriteLine();
+					Console.WriteLine("liste => Lister av alle personer med fornavn, fødselsår, dødsår, navn og id på mor og far om det finnes i registeret.");
 					Console.WriteLine("vis => Viser IDen til en bestemt person med mor, far og barn.");
 					Console.WriteLine("exit => Exits program.");
+					Console.WriteLine();
 				}
 
 				else if (txt == "liste")
@@ -85,7 +92,7 @@ namespace ObligatoriskOppgave_1
 					}
 					Console.WriteLine();
 				}
-				else if (txt == "Exit")
+				else if (txt == "exit")
 				{
 					loop = false;
 				}
