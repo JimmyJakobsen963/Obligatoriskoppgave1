@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using Obligatorisk_oppgave1;
 
 namespace ObligatoriskOppgave_1
@@ -46,7 +45,7 @@ namespace ObligatoriskOppgave_1
 			var loop = true;
 			while (loop == true)
 			{
-				var txt = Console.ReadLine();
+				var txt = Console.ReadLine().ToLower();
 				if (txt == "hjelp")
 				{
 					Console.WriteLine();
@@ -55,7 +54,6 @@ namespace ObligatoriskOppgave_1
 					Console.WriteLine("exit => Exits program.");
 					Console.WriteLine();
 				}
-
 				else if (txt == "liste")
 				{
 					foreach (var person in personList)

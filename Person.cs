@@ -6,8 +6,8 @@ namespace Obligatorisk_oppgave1
 	{
 		public int Id;
 		public int BirthYear;
-		public string LastName;
 		public string FirstName;
+		public string LastName;
 		public Person Mother;
 		public Person Father;
 	}
