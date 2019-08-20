@@ -17,6 +17,7 @@ namespace ObligatoriskOppgave_1
 			var harald = new Person { Id = 6, FirstName = "Harald", BirthYear = 1937 };
 			var sonja = new Person { Id = 7, FirstName = "Sonja", BirthYear = 1937 };
 			var olav = new Person { Id = 8, FirstName = "Olav", BirthYear = 1903 };
+			var none = new Person { Id = 1337, FirstName = "None", BirthYear = 1337 };
 
 			List<Person> personList;
 			personList = new List<Person>(8) { sverreMagnus, ingridAlexandra, haakon, metteMarit, marius, harald, sonja, olav };
@@ -25,18 +26,18 @@ namespace ObligatoriskOppgave_1
 			sverreMagnus.Mother = metteMarit;
 			ingridAlexandra.Father = haakon;
 			ingridAlexandra.Mother = metteMarit;
-			metteMarit.Father = null;
-			metteMarit.Mother = null;
-			marius.Father = null;
+			metteMarit.Father = none;
+			metteMarit.Mother = none;
+			marius.Father = none;
 			marius.Mother = metteMarit;
 			haakon.Father = harald;
 			haakon.Mother = sonja;
-			sonja.Father = null;
-			sonja.Mother = null;
+			sonja.Father = none;
+			sonja.Mother = none;
 			harald.Father = olav;
-			harald.Mother = null;
-			olav.Father = null;
-			olav.Mother = null;
+			harald.Mother = none;
+			olav.Father = none;
+			olav.Mother = none;
 
 			Console.WriteLine("Slektstre-program!");
 			Console.WriteLine();
@@ -58,14 +59,7 @@ namespace ObligatoriskOppgave_1
 				{
 					foreach (var person in personList)
 					{
-						Console.Write($"Id: {person.Id}, Fornavn: {person.FirstName}");
-						if (person.LastName != null) Console.Write($", Etternavn: {person.LastName}");
-						Console.WriteLine($", Fødselsår: {person.BirthYear}");
-						if (person.Father != null)
-							Console.WriteLine($"FarId: {person.Father.Id}, FarNavn: {person.Father.FirstName}");
-						if (person.Mother != null)
-							Console.WriteLine($"MorId: {person.Mother.Id}, MorNavn: {person.Mother.FirstName}");
-						Console.WriteLine();
+						person.Show();
 					}
 				}
 				else if (txt == "vis")
@@ -73,21 +67,21 @@ namespace ObligatoriskOppgave_1
 					Console.Write("Skriv Id: ");
 					int id = Convert.ToInt32(Console.ReadLine());
 					var person = personList.FirstOrDefault(p => p.Id == id);
-					Console.Write($"Id: {person.Id}, Fornavn: {person.FirstName}");
-					if (person.LastName != null) Console.Write($", Etternavn: {person.LastName}");
-					Console.WriteLine($", Fødselsår: {person.BirthYear}");
-					if (person.Father != null)
-						Console.WriteLine($"FarId: {person.Father.Id}, FarNavn: {person.Father.FirstName}");
-					if (person.Mother != null)
-						Console.WriteLine($"MorId: {person.Mother.Id}, MorNavn: {person.Mother.FirstName}");
-
-					foreach (var barn in personList)
+					if (person != null)
 					{
-						if (barn.Father != null && barn.Father.Id == person.Id)
-							Console.WriteLine($"BarnId : {barn.Id}, BarnNavn: {barn.FirstName}");
-						if (barn.Mother != null && barn.Mother.Id == person.Id)
-							Console.WriteLine($"BarnId : {barn.Id}, BarnNavn: {barn.FirstName}");
+						person.Show();
+
+
+
+						foreach (var barn in personList)
+						{
+							if (barn.Father != null && barn.Father.Id == person.Id)
+								Console.WriteLine($"BarnId : {barn.Id}, BarnNavn: {barn.FirstName}");
+							if (barn.Mother != null && barn.Mother.Id == person.Id)
+								Console.WriteLine($"BarnId : {barn.Id}, BarnNavn: {barn.FirstName}");
+						}
 					}
+
 					Console.WriteLine();
 				}
 				else if (txt == "exit")
